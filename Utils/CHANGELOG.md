@@ -10,4 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ObjectPool class and tests
 - Extensions class with a collection of extension methods
 
-[0.0.1]: https://github.com/CheesePie13/UnityPackages/releases/tag/v0.0.1
+[0.0.1]: https://github.com/CheesePie13/UnityPackages/releases/tag/utils-v0.0.1
