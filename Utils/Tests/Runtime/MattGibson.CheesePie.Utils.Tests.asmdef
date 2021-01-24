@@ -1,0 +1,11 @@
+{
+	"name": "MattGibson.CheesePie.Utils.Tests",
+	"references": [
+		"MattGibson.CheesePie.Utils"
+	],
+	"optionalUnityReferences": [
+		"TestAssemblies"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

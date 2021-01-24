@@ -1,0 +1,17 @@
+{
+    "name": "MattGibson.CheesePie.Utils.Editor",
+    "references": [
+        "GUID:a7d1b129b04d80c4fa3449295108bb16"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,11 @@
+{
+    "name": "dev.mattgibson.cheesepie.utils",
+    "displayName": "CheesePie Utils",
+    "version": "0.0.1",
+    "unity": "2019.4",
+    "description": "Various utility classes and extension methods.",
+    "author": {
+        "name": "Matt Gibson",
+        "email": "contact@mattgibson.dev"
+    }
+}
