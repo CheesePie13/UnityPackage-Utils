@@ -15,7 +15,7 @@ namespace CheesePie.Utils {
 		/// <param name="point">Delta from initial point</param>
 		/// <param name="gravity">Vertical gravity (Downwards is negative)</param>
 		/// <returns>The Initial velocity</returns>
-		public static Vector2? CalculateInitialVelocity(float initialSpeed, Vector2 point, float gravity) {
+		public static Vector2? FindInitialVelocity(float initialSpeed, Vector2 point, float gravity) {
 			// Using these equations:
 			//   initialVelocity.x = initialSpeed * cos(theta) * time
 			//   initialVelocity.y = 0.5 * gravity * time^2 + initialSpeed * sin(theta) * time

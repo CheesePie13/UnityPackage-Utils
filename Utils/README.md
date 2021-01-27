@@ -1,11 +1,13 @@
 # CheesePie Utils
 Various utility classes and extension methods.
 
+## Static Classes
+- CPMath
+- ProjectileMath
+
 ## Classes
 - FiniteStateMachine
 - ObjectPool
-- CPMath
-- Projectile Math
 
 ## Extension Methods For:
 - List

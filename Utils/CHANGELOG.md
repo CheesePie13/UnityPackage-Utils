@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - CPMath (general math functions)
 - ProjectileMath (math functions related to projectiles)
+- Tests for FiniteStateMachine
 
 ### Changed
+- Better tests for ObjectPool
+
 ### Removed
 
 ## [0.0.1] - 2021-01-24
