@@ -4,6 +4,8 @@ Various utility classes and extension methods.
 ## Classes
 - FiniteStateMachine
 - ObjectPool
+- CPMath
+- Projectile Math
 
 ## Extension Methods For:
 - List
@@ -14,3 +16,6 @@ Various utility classes and extension methods.
 - Vector3Int
 - Rect
 - AnimationCurve
+
+# Editor Utils
+- InspectorReadOnly Attribute
