@@ -19,10 +19,27 @@ namespace CheesePie.Utils {
 		public const float TAU = PI * 2f;
 
 		/// <summary>
+		/// Do a Mathf.Approximately() comparison on each component.
+		/// </summary>
+		public static bool Approximately(Vector2 a, Vector2 b) {
+			return Mathf.Approximately(a.x, b.x)
+			       && Mathf.Approximately(a.y, b.y);
+		}
+
+		/// <summary>
+		/// Do a Mathf.Approximately() comparison on each component.
+		/// </summary>
+		public static bool Approximately(Vector3 a, Vector3 b) {
+			return Mathf.Approximately(a.x, b.x)
+			       && Mathf.Approximately(a.y, b.y)
+			       && Mathf.Approximately(a.z, b.z);
+		}
+
+		/// <summary>
 		/// Get a unit Vector2 from the given angle in radians,
 		/// Starts at (1,0) and goes counter-clockwise
 		/// </summary>
-		public static Vector2 Vector2FromAngle(float angle) {
+		public static Vector2 AngleToVector2(float angle) {
 			return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 		}
 
@@ -30,8 +47,9 @@ namespace CheesePie.Utils {
 		/// Get the angle of the given Vector2 in radians,
 		/// Starts at (1,0) and goes counter-clockwise
 		/// </summary>
+		/// <returns>An angle between -PI and PI</returns>
 		public static float AngleFromVector2(Vector2 vector2) {
-			return Mathf.Atan2(vector2.y, vector2.x);
+			return Mathf.Atan2(vector2.y, vector2.x) ;
 		}
 
 		/// <summary>
@@ -50,24 +68,9 @@ namespace CheesePie.Utils {
 		}
 
 		/// <summary>
-		/// Get the difference between 2 angles in degrees,
-		/// will always be between -180 and 180
-		/// </summary>
-		public static float SubtractAnglesDeg(float a, float b) {
-			float d = (a - b) % 360f;
-			if (d > 180f) {
-				return d - 360;
-			} else if (d < -180f) {
-				return d + 360;
-			} else {
-				return d;
-			}
-		}
-
-		/// <summary>
 		/// Get the 2 solution to a quadratic equation in the form 0 = a*x^2 + b*x + c
 		/// </summary>
-		/// <returns>The 2 solutions (may be the same) or null if no solutions</returns>
+		/// <returns>The 2 solutions in increasing order (may be the same) or null if no solutions</returns>
 		public static Tuple<float, float> SolveQuadratic(float a, float b, float c) {
 			float discriminant = (b * b) - (4f * a * c);
 			if (discriminant < 0f) {
@@ -76,7 +79,11 @@ namespace CheesePie.Utils {
 
 			float sqrt = Mathf.Sqrt(discriminant);
 
-			return new Tuple<float, float>((-b - sqrt) / (2f * a), (-b + sqrt) / (2f * a));
+			float root1 = (-b - sqrt) / (2f * a);
+			float root2 = (-b + sqrt) / (2f * a);
+			return root1 < root2
+					? new Tuple<float, float>(root1, root2)
+					: new Tuple<float, float>(root2, root1);
 		}
 	}
 }

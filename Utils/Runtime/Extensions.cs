@@ -100,11 +100,11 @@ namespace CheesePie.Utils {
 		/// Use a coroutine to invoke a callback after a given time.
 		/// </summary>
 		/// <param name="time">Delay in seconds.</param>
-		public static Coroutine StarCoroutineAction(this MonoBehaviour monoBehaviour, float time, Action callback) {
-			return monoBehaviour.StartCoroutine(__StarCoroutineAction(time, callback));
+		public static Coroutine StartCoroutineAction(this MonoBehaviour monoBehaviour, float time, Action callback) {
+			return monoBehaviour.StartCoroutine(__StartCoroutineAction(time, callback));
 		}
 
-		private static IEnumerator __StarCoroutineAction(float time, Action callback) {
+		private static IEnumerator __StartCoroutineAction(float time, Action callback) {
 			yield return new WaitForSeconds(time);
 			callback?.Invoke();
 		}
@@ -112,41 +112,67 @@ namespace CheesePie.Utils {
 		#endregion
 
 
-		#region Vector2Int
+		#region Vector2
 
 		/// <summary>
-		/// Get the area of a rectangle with these dimensions.
+		/// Divide the x and y values by the divisor.
 		/// </summary>
-		public static int Area(this Vector2Int vector2Int) {
-			return vector2Int.x * vector2Int.y;
+		public static Vector2 Divide(this Vector2 vec, float divisor) {
+			return new Vector2(vec.x / divisor, vec.y / divisor);
+		}
+
+		#endregion
+
+
+		#region Vector3
+
+		/// <summary>
+		/// Divide the x, y and z values by the divisor.
+		/// </summary>
+		public static Vector3 Divide(this Vector3 vec, float divisor) {
+			return new Vector3(vec.x / divisor, vec.y / divisor, vec.z / divisor);
 		}
 
 		/// <summary>
-		/// Get the perimeter of a rectangle with these dimensions.
+		/// Get the X and Y components.
 		/// </summary>
-		public static int Perimeter(this Vector2Int vector2Int) {
-			return (vector2Int.x + vector2Int.y) * 2;
+		public static Vector2 XY(this Vector3 vector3) {
+			return new Vector2(vector3.x, vector3.y);
 		}
 
 		/// <summary>
-		/// Divide the x and y values by the divisor and round to the nearest int.
+		/// Get the X and Z components.
 		/// </summary>
-		public static Vector2Int DivideRounded(this Vector2Int vector2Int, float divisor) {
-			return new Vector2Int(Mathf.RoundToInt(vector2Int.x / divisor), Mathf.RoundToInt(vector2Int.y / divisor));
+		public static Vector2 XZ(this Vector3 vector3) {
+			return new Vector2(vector3.x, vector3.z);
 		}
 
 		/// <summary>
-		/// Divide the x and y values by the divisor and floor the result to an int.
+		/// Get the Y and X components.
 		/// </summary>
-		public static Vector2Int DivideFloor(this Vector2Int vector2Int, float divisor) {
-			return new Vector2Int(Mathf.FloorToInt(vector2Int.x / divisor), Mathf.FloorToInt(vector2Int.y / divisor));
+		public static Vector2 YX(this Vector3 vector3) {
+			return new Vector2(vector3.y, vector3.x);
 		}
 
 		/// <summary>
-		/// Divide the x and y values by the divisor and return a Vector2.
+		/// Get the Y and Z components.
 		/// </summary>
-		public static Vector2 Divide(this Vector2Int vector2Int, float divisor) {
-			return new Vector2(vector2Int.x / divisor, vector2Int.y / divisor);
+		public static Vector2 YZ(this Vector3 vector3) {
+			return new Vector2(vector3.y, vector3.z);
+		}
+
+		/// <summary>
+		/// Get the Z and X components.
+		/// </summary>
+		public static Vector2 ZX(this Vector3 vector3) {
+			return new Vector2(vector3.z, vector3.x);
+		}
+
+		/// <summary>
+		/// Get the Z and Y components.
+		/// </summary>
+		public static Vector2 ZY(this Vector3 vector3) {
+			return new Vector2(vector3.z, vector3.y);
 		}
 
 		#endregion
@@ -169,17 +195,17 @@ namespace CheesePie.Utils {
 		}
 
 		/// <summary>
-		/// Get the Y and Z components.
-		/// </summary>
-		public static Vector2Int YZ(this Vector3Int vector3Int) {
-			return new Vector2Int(vector3Int.y, vector3Int.z);
-		}
-
-		/// <summary>
 		/// Get the Y and X components.
 		/// </summary>
 		public static Vector2Int YX(this Vector3Int vector3Int) {
 			return new Vector2Int(vector3Int.y, vector3Int.x);
+		}
+
+		/// <summary>
+		/// Get the Y and Z components.
+		/// </summary>
+		public static Vector2Int YZ(this Vector3Int vector3Int) {
+			return new Vector2Int(vector3Int.y, vector3Int.z);
 		}
 
 		/// <summary>

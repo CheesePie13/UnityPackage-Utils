@@ -1,11 +1,20 @@
 {
 	"name": "MattGibson.CheesePie.Utils.Tests",
 	"references": [
+		"UnityEngine.TestRunner",
 		"MattGibson.CheesePie.Utils"
 	],
-	"optionalUnityReferences": [
-		"TestAssemblies"
-	],
 	"includePlatforms": [],
-	"excludePlatforms": []
+	"excludePlatforms": [],
+	"allowUnsafeCode": false,
+	"overrideReferences": true,
+	"precompiledReferences": [
+		"nunit.framework.dll"
+	],
+	"autoReferenced": false,
+	"defineConstraints": [
+		"UNITY_INCLUDE_TESTS"
+	],
+	"versionDefines": [],
+	"noEngineReferences": false
 }
