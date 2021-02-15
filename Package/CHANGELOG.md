@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2021-02-15
+### Changed
+- Changed repository name (I no longer plan on having multiple unity packages in the same repo)
+- Changed versions and tags from `utils-v<version>` to `v<version>`
+
 ## [0.0.2] - 2021-02-15
 ### Added
 - CPMath (general math functions)
@@ -27,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ObjectPool class and tests
 - Extensions class with a collection of extension methods
 
-[Unreleased]: https://github.com/CheesePie13/UnityPackages/compare/utils-v0.0.2...HEAD
-[0.0.2]: https://github.com/CheesePie13/UnityPackages/compare/utils-v0.0.1...utils-v0.0.2
-[0.0.1]: https://github.com/CheesePie13/UnityPackages/releases/tag/utils-v0.0.1
+[Unreleased]: https://github.com/CheesePie13/UnityPackages/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/CheesePie13/UnityPackages/compare/v0.0.2...v0.1.0
+[0.0.2]: https://github.com/CheesePie13/UnityPackages/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/CheesePie13/UnityPackages/releases/tag/v0.0.1

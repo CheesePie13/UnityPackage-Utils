@@ -82,7 +82,19 @@ namespace CheesePie.Utils {
 		/// Start multiple coroutines and return a coroutine that completes once they are all complete.
 		/// </summary>
 		public static Coroutine StartCoroutines(this MonoBehaviour monoBehaviour, params IEnumerator[] routines) {
-			return monoBehaviour.StartCoroutine(__StartCoroutines(monoBehaviour, routines));
+			return monoBehaviour.StartCoroutine(Coroutine());
+
+			// @todo: Decide if I like this local function better
+			IEnumerator Coroutine() {
+				List<Coroutine> coroutines = new List<Coroutine>();
+				foreach (IEnumerator routine in routines) {
+					coroutines.Add(monoBehaviour.StartCoroutine(routine));
+				}
+
+				foreach (Coroutine coroutine in coroutines) {
+					yield return coroutine;
+				}
+			}
 		}
 
 		private static IEnumerator __StartCoroutines(MonoBehaviour monoBehaviour, IEnumerator[] routines) {

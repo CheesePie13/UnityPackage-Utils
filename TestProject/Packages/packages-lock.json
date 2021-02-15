@@ -95,7 +95,7 @@
       }
     },
     "dev.mattgibson.cheesepie.utils": {
-      "version": "file:../../Utils",
+      "version": "file:../../Package",
       "depth": 0,
       "source": "local",
       "dependencies": {}
