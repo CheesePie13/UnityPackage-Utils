@@ -26,6 +26,24 @@ namespace CheesePie.Utils.Tests {
 
 		#endregion
 
+		#region IReadOnlyList
+
+		[Test]
+		public void TestIReadOnlyListIndexOf() {
+			IReadOnlyList<int> list = new List<int> {1, 2, 3};
+			int index = list.IndexOf(2);
+			Assert.AreEqual(1, index);
+
+			object obj1 = 1;
+			object obj2 = 2;
+			object obj3 = 3;
+			IReadOnlyList<object> objList = new List<object> {obj1, obj2, obj3};
+			index = objList.IndexOf(obj3);
+			Assert.AreEqual(2, index);
+		}
+
+		#endregion
+
 
 		#region Array
 

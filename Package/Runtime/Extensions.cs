@@ -37,6 +37,24 @@ namespace CheesePie.Utils {
 		#endregion
 
 
+		#region IReadOnlyList
+
+		/// <summary>
+		/// Finds the index of the first occurrence of the given object within the list.
+		/// </summary>
+		/// <returns>The index of the first occurrence or -1 if not found.</returns>>
+		public static int IndexOf<T>(this IReadOnlyList<T> list, T item) {
+			for (int i = 0; i < list.Count; i++) {
+				if (EqualityComparer<T>.Default.Equals(list[i], item)) {
+					return i;
+				}
+			}
+			return -1;
+		}
+
+		#endregion
+
+
 		#region Array
 
 		/// <summary>
