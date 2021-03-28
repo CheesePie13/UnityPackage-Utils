@@ -136,6 +136,64 @@ namespace CheesePie.Utils.Tests {
 		}
 
 		[Test]
+		public void TestMultiStateEnterExitTransitionEvents() {
+
+			int abEnterCount = 0;
+			int abExitCount = 0;
+			int bcEnterCount = 0;
+			int bcExitCount = 0;
+
+			FiniteStateMachine<State> fsm = new FiniteStateMachine<State>();
+			fsm.AddTransition(State.A, State.B, State.C);
+			fsm.AddTransition(State.B, State.A, State.C);
+			fsm.AddTransition(State.C, State.A, State.B);
+			fsm.AddEventOnEnter(new[] {State.A, State.B}, (from, to) => {
+				Assert.IsTrue(from != State.A && from != State.B);
+				Assert.IsTrue(to == State.A || to == State.B);
+				abEnterCount++;
+			});
+			fsm.AddEventOnExit(new[] {State.A, State.B}, (from, to) => {
+				Assert.IsTrue(from == State.A || from == State.B);
+				Assert.IsTrue(to != State.A && to != State.B);
+				abExitCount++;
+			});
+			fsm.AddEventOnEnter(new[] {State.B, State.C}, (from, to) => {
+				Assert.IsTrue(from != State.B && from != State.C);
+				Assert.IsTrue(to == State.B || to == State.C);
+				bcEnterCount++;
+			});
+			fsm.AddEventOnExit(new[] {State.B, State.C}, (from, to) => {
+				Assert.IsTrue(from == State.B || from == State.C);
+				Assert.IsTrue(to != State.B && to != State.C);
+				bcExitCount++;
+			});
+
+			fsm.Start(State.A);
+			Assert.AreEqual(0, abEnterCount);
+			Assert.AreEqual(0, abExitCount);
+			Assert.AreEqual(0, bcEnterCount);
+			Assert.AreEqual(0, bcExitCount);
+
+			fsm.TransitionTo(State.B);
+			Assert.AreEqual(0, abEnterCount);
+			Assert.AreEqual(0, abExitCount);
+			Assert.AreEqual(1, bcEnterCount);
+			Assert.AreEqual(0, bcExitCount);
+
+			fsm.TransitionTo(State.C);
+			Assert.AreEqual(0, abEnterCount);
+			Assert.AreEqual(1, abExitCount);
+			Assert.AreEqual(1, bcEnterCount);
+			Assert.AreEqual(0, bcExitCount);
+
+			fsm.TransitionTo(State.A);
+			Assert.AreEqual(1, abEnterCount);
+			Assert.AreEqual(1, abExitCount);
+			Assert.AreEqual(1, bcEnterCount);
+			Assert.AreEqual(1, bcExitCount);
+		}
+
+		[Test]
 		public void TestTransitionExists() {
 			FiniteStateMachine<State> fsm = new FiniteStateMachine<State>();
 			fsm.AddTransition(State.A, State.B, State.C);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace CheesePie.Utils {
 
@@ -128,6 +129,36 @@ namespace CheesePie.Utils {
 		}
 
 		/// <summary>
+		/// Add a callback when a transition happens from a state that is
+		/// not in the given states to a state that is in the given states
+		/// </summary>
+		public void AddEventOnEnter(ICollection<T> states, Action<T, T> onEnter) {
+			T[] statesArray = states.ToArray();
+			foreach (T state in statesArray) {
+				AddEventOnEnter(state, (from, to) => {
+					if (!statesArray.Contains(from)) {
+						onEnter(from, to);
+					}
+				});
+			}
+		}
+
+		/// <summary>
+		/// Add a callback when a transition happens from a state that is
+		/// not in the given states to a state that is in the given states
+		/// </summary>
+		public void AddEventOnEnter(ICollection<T> states, Action onEnter) {
+			T[] statesArray = states.ToArray();
+			foreach (T state in statesArray) {
+				AddEventOnEnter(state, (from, to) => {
+					if (!statesArray.Contains(from)) {
+						onEnter();
+					}
+				});
+			}
+		}
+
+		/// <summary>
 		/// Add a call back to when a transition away from this state occurs
 		/// </summary>
 		public void AddEventOnExit(T state, Action<T, T> onExit) {
@@ -143,6 +174,36 @@ namespace CheesePie.Utils {
 		/// </summary>
 		public void AddEventOnExit(T state, Action onExit) {
 			AddEventOnExit(state, (_, __) => onExit());
+		}
+
+		/// <summary>
+		/// Add a callback when a transition happens from a state that is
+		/// in the given states to a state that is not in the given states
+		/// </summary>
+		public void AddEventOnExit(ICollection<T> states, Action<T, T> onExit) {
+			T[] statesArray = states.ToArray();
+			foreach (T state in statesArray) {
+				AddEventOnExit(state, (from, to) => {
+					if (!statesArray.Contains(to)) {
+						onExit(from, to);
+					}
+				});
+			}
+		}
+
+		/// <summary>
+		/// Add a callback when a transition happens from a state that is
+		/// in the given states to a state that is not in the given states
+		/// </summary>
+		public void AddEventOnExit(ICollection<T> states, Action onExit) {
+			T[] statesArray = states.ToArray();
+			foreach (T state in statesArray) {
+				AddEventOnExit(state, (from, to) => {
+					if (!statesArray.Contains(to)) {
+						onExit();
+					}
+				});
+			}
 		}
 
 		#endregion
