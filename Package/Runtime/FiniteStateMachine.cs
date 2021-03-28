@@ -132,7 +132,7 @@ namespace CheesePie.Utils {
 		/// Add a callback when a transition happens from a state that is
 		/// not in the given states to a state that is in the given states
 		/// </summary>
-		public void AddEventOnEnter(ICollection<T> states, Action<T, T> onEnter) {
+		public void AddEventOnGroupEnter(ICollection<T> states, Action<T, T> onEnter) {
 			T[] statesArray = states.ToArray();
 			foreach (T state in statesArray) {
 				AddEventOnEnter(state, (from, to) => {
@@ -147,7 +147,7 @@ namespace CheesePie.Utils {
 		/// Add a callback when a transition happens from a state that is
 		/// not in the given states to a state that is in the given states
 		/// </summary>
-		public void AddEventOnEnter(ICollection<T> states, Action onEnter) {
+		public void AddEventOnGroupEnter(ICollection<T> states, Action onEnter) {
 			T[] statesArray = states.ToArray();
 			foreach (T state in statesArray) {
 				AddEventOnEnter(state, (from, to) => {
@@ -180,7 +180,7 @@ namespace CheesePie.Utils {
 		/// Add a callback when a transition happens from a state that is
 		/// in the given states to a state that is not in the given states
 		/// </summary>
-		public void AddEventOnExit(ICollection<T> states, Action<T, T> onExit) {
+		public void AddEventOnGroupExit(ICollection<T> states, Action<T, T> onExit) {
 			T[] statesArray = states.ToArray();
 			foreach (T state in statesArray) {
 				AddEventOnExit(state, (from, to) => {
@@ -195,7 +195,7 @@ namespace CheesePie.Utils {
 		/// Add a callback when a transition happens from a state that is
 		/// in the given states to a state that is not in the given states
 		/// </summary>
-		public void AddEventOnExit(ICollection<T> states, Action onExit) {
+		public void AddEventOnGroupExit(ICollection<T> states, Action onExit) {
 			T[] statesArray = states.ToArray();
 			foreach (T state in statesArray) {
 				AddEventOnExit(state, (from, to) => {

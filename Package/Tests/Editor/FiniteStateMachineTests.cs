@@ -147,22 +147,22 @@ namespace CheesePie.Utils.Tests {
 			fsm.AddTransition(State.A, State.B, State.C);
 			fsm.AddTransition(State.B, State.A, State.C);
 			fsm.AddTransition(State.C, State.A, State.B);
-			fsm.AddEventOnEnter(new[] {State.A, State.B}, (from, to) => {
+			fsm.AddEventOnGroupEnter(new[] {State.A, State.B}, (from, to) => {
 				Assert.IsTrue(from != State.A && from != State.B);
 				Assert.IsTrue(to == State.A || to == State.B);
 				abEnterCount++;
 			});
-			fsm.AddEventOnExit(new[] {State.A, State.B}, (from, to) => {
+			fsm.AddEventOnGroupExit(new[] {State.A, State.B}, (from, to) => {
 				Assert.IsTrue(from == State.A || from == State.B);
 				Assert.IsTrue(to != State.A && to != State.B);
 				abExitCount++;
 			});
-			fsm.AddEventOnEnter(new[] {State.B, State.C}, (from, to) => {
+			fsm.AddEventOnGroupEnter(new[] {State.B, State.C}, (from, to) => {
 				Assert.IsTrue(from != State.B && from != State.C);
 				Assert.IsTrue(to == State.B || to == State.C);
 				bcEnterCount++;
 			});
-			fsm.AddEventOnExit(new[] {State.B, State.C}, (from, to) => {
+			fsm.AddEventOnGroupExit(new[] {State.B, State.C}, (from, to) => {
 				Assert.IsTrue(from == State.B || from == State.C);
 				Assert.IsTrue(to != State.B && to != State.C);
 				bcExitCount++;
