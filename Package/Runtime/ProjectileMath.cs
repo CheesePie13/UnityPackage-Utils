@@ -9,12 +9,12 @@ namespace CheesePie.Utils {
 	public static class ProjectileMath {
 
 		/// <summary>
-		/// Calculate the initial velocity of projectile given the magnitude of the initial velocity
-		/// and an intersection point. Will always choose the velocity with the smaller y value.
+		/// Calculate the possible initial velocities of a projectile given the magnitude of the initial velocity
+		/// and an intersection point.
 		/// </summary>
 		/// <param name="point">Delta from initial point</param>
 		/// <param name="yForce">Vertical force (Downwards is negative)</param>
-		/// <returns>The Initial velocity</returns>
+		/// <returns>The initial velocities or null if no solution exists</returns>
 		public static Tuple<Vector2, Vector2> FindInitialVelocity(float initialSpeed, Vector2 point, float yForce) {
 			// Using these equations:
 			//   initialVelocity.x = initialSpeed * cos(theta) * time

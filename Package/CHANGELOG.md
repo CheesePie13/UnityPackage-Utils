@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Added `IndexOf()` extension method for `IReadOnlyList` (with tests)
 - Added Enter and Exit events to `FiniteStateMachine` for groups of states (with tests)
+- Added `Interpolation` static class with functions for exponential motion (with tests) 
 
 ## [0.1.0] - 2021-02-15
 ### Changed
