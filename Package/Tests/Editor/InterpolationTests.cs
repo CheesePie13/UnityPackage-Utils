@@ -91,5 +91,71 @@ namespace CheesePie.Utils.Tests {
 			currentValue = Interpolation.ExpMotion(currentValue, Vector3.zero, 0.1f, 0.3f);
 			Assert.IsTrue(TestUtils.Approx(currentValue, Vector3.one * 0.9f));
 		}
+
+		[Test]
+		public void TestExpMotionQuaternion() {
+			Quaternion startValue = Quaternion.identity;
+			Quaternion targetValue = Quaternion.Euler(45f, 45f, 45f);
+			Quaternion currentValue = startValue;
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 1f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Lerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 1f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Lerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.25f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Lerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.1f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.4f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.2f);
+			currentValue = Interpolation.ExpMotion(currentValue, targetValue, 0.1f, 0.3f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Lerp(startValue, targetValue, 0.1f)));
+		}
+
+		[Test]
+		public void TestExpMotionSphericalQuaternion() {
+			Quaternion startValue = Quaternion.identity;
+			Quaternion targetValue = Quaternion.Euler(45f, 45f, 45f);
+			Quaternion currentValue = startValue;
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 1f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Slerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 1f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Slerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.25f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.25f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Slerp(startValue, targetValue, 0.1f)));
+
+			startValue = Quaternion.Euler(45f, 45f, 45f);
+			targetValue = Quaternion.identity;
+			currentValue = startValue;
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.1f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.4f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.2f);
+			currentValue = Interpolation.ExpMotionSpherical(currentValue, targetValue, 0.1f, 0.3f);
+			Assert.IsTrue(TestUtils.Approx(currentValue, Quaternion.Slerp(startValue, targetValue, 0.1f)));
+		}
 	}
 }
